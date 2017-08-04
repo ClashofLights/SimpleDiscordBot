@@ -1,4 +1,4 @@
-﻿namespace SimpleDiscordBot
+namespace SimpleDiscordBot
 {
     using Discord;
     using Discord.WebSocket;
@@ -16,20 +16,20 @@
         {
             try
             {
-                this._Token = Token;
+                _Token = Token;
 
-                this._Client = new DiscordSocketClient(new DiscordSocketConfig()
+                _Client = new DiscordSocketClient(new DiscordSocketConfig()
                 {
                     LogLevel = LogSeverity.Info,
                 });
 
-                this._Client.Log += this.LogHandler;
+                _Client.Log += this.LogHandler;
 
-                this._CommandHandler = new CommandHandler();
-                this._CommandHandler.InstallAsync(this._Client).Wait();
+                _CommandHandler = new CommandHandler();
+                _CommandHandler.InstallAsync(_Client).Wait();
 
-                this._Client.LoginAsync(TokenType.Bot, this._Token);
-                this._Client.StartAsync();
+                _Client.LoginAsync(TokenType.Bot, _Token);
+                _Client.StartAsync();
             }
             catch (Exception _Exception)
             {
